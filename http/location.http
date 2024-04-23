@@ -1,0 +1,46 @@
+
+###
+
+POST http://localhost:8001/business/location/create
+Content-Type: application/json
+
+{
+  "description": "TAYLOR ST: BAY ST to NORTH POINT ST (2500 - 2599)"
+}
+
+
+###
+
+POST http://localhost:8001/business/location/page
+Content-Type: application/json
+
+{
+  "pageNum": 1,
+  "pageSize": 2,
+  "description": "(2500 - 2599)"
+}
+
+
+###
+
+POST http://localhost:8001/business/location/query
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+###
+
+POST http://localhost:8001/business/location/modify
+Content-Type: application/json
+
+{
+  "id": 1,
+  "status": 1,
+  "description": "234234",
+  "coordinates": {
+    "lng": 37.888888,
+    "lat": -122.888888
+  }
+}

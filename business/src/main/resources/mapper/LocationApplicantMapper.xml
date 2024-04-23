@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cw.mfc.business.mapper.LocationApplicantMapper">
+  <resultMap id="BaseResultMap" type="com.cw.mfc.business.model.LocationApplicant">
+    <!--@Table location_applicant-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="location_id" jdbcType="BIGINT" property="locationId" />
+    <result column="location_desc" jdbcType="VARCHAR" property="locationDesc" />
+    <result column="applicant_id" jdbcType="BIGINT" property="applicantId" />
+    <result column="facility_type" jdbcType="VARCHAR" property="facilityType" />
+    <result column="cnn" jdbcType="BIGINT" property="cnn" />
+    <result column="apply_status" jdbcType="INTEGER" property="applyStatus" />
+    <result column="open_status" jdbcType="INTEGER" property="openStatus" />
+    <result column="open_time" jdbcType="TIME" property="openTime" />
+    <result column="close_time" jdbcType="TIME" property="closeTime" />
+    <result column="coordinates" property="coordinates" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="is_deleted" jdbcType="BIGINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, location_id, location_desc, applicant_id, facility_type, cnn, apply_status, open_status,
+    open_time, close_time, coordinates, longitude, latitude,
+    version, create_time, create_by, update_time, update_by, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from location_applicant
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from location_applicant
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cw.mfc.business.model.LocationApplicant" useGeneratedKeys="true">
+    insert into location_applicant (location_id, location_desc, applicant_id, 
+      facility_type, cnn, apply_status, 
+      open_status, open_time, close_time, 
+      coordinates, longitude, latitude,
+      version, create_time, create_by,
+      update_time, update_by, is_deleted
+      )
+    values (#{locationId,jdbcType=BIGINT}, #{locationDesc,jdbcType=VARCHAR}, #{applicantId,jdbcType=BIGINT}, 
+      #{facilityType,jdbcType=VARCHAR}, #{cnn,jdbcType=BIGINT}, #{applyStatus,jdbcType=INTEGER}, 
+      #{openStatus,jdbcType=INTEGER}, #{openTime,jdbcType=TIME}, #{closeTime,jdbcType=TIME}, 
+      #{coordinates,jdbcType=INTEGER}, #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL},
+      #{version,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cw.mfc.business.model.LocationApplicant" useGeneratedKeys="true">
+    insert into location_applicant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="locationId != null">
+        location_id,
+      </if>
+      <if test="locationDesc != null">
+        location_desc,
+      </if>
+      <if test="applicantId != null">
+        applicant_id,
+      </if>
+      <if test="facilityType != null">
+        facility_type,
+      </if>
+      <if test="cnn != null">
+        cnn,
+      </if>
+      <if test="applyStatus != null">
+        apply_status,
+      </if>
+      <if test="openStatus != null">
+        open_status,
+      </if>
+      <if test="openTime != null">
+        open_time,
+      </if>
+      <if test="closeTime != null">
+        close_time,
+      </if>
+      <if test="coordinates != null">
+        coordinates,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="locationId != null">
+        #{locationId,jdbcType=BIGINT},
+      </if>
+      <if test="locationDesc != null">
+        #{locationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantId != null">
+        #{applicantId,jdbcType=BIGINT},
+      </if>
+      <if test="facilityType != null">
+        #{facilityType,jdbcType=VARCHAR},
+      </if>
+      <if test="cnn != null">
+        #{cnn,jdbcType=BIGINT},
+      </if>
+      <if test="applyStatus != null">
+        #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="openStatus != null">
+        #{openStatus,jdbcType=INTEGER},
+      </if>
+      <if test="openTime != null">
+        #{openTime,jdbcType=TIME},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=TIME},
+      </if>
+      <if test="coordinates != null">
+        #{coordinates,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cw.mfc.business.model.LocationApplicant">
+    update location_applicant
+    <set>
+      <if test="locationId != null">
+        location_id = #{locationId,jdbcType=BIGINT},
+      </if>
+      <if test="locationDesc != null">
+        location_desc = #{locationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantId != null">
+        applicant_id = #{applicantId,jdbcType=BIGINT},
+      </if>
+      <if test="facilityType != null">
+        facility_type = #{facilityType,jdbcType=VARCHAR},
+      </if>
+      <if test="cnn != null">
+        cnn = #{cnn,jdbcType=BIGINT},
+      </if>
+      <if test="applyStatus != null">
+        apply_status = #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="openStatus != null">
+        open_status = #{openStatus,jdbcType=INTEGER},
+      </if>
+      <if test="openTime != null">
+        open_time = #{openTime,jdbcType=TIME},
+      </if>
+      <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=TIME},
+      </if>
+      <if test="coordinates != null">
+        coordinates = #{coordinates,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cw.mfc.business.model.LocationApplicant">
+    update location_applicant
+    set location_id = #{locationId,jdbcType=BIGINT},
+      location_desc = #{locationDesc,jdbcType=VARCHAR},
+      applicant_id = #{applicantId,jdbcType=BIGINT},
+      facility_type = #{facilityType,jdbcType=VARCHAR},
+      cnn = #{cnn,jdbcType=BIGINT},
+      apply_status = #{applyStatus,jdbcType=INTEGER},
+      open_status = #{openStatus,jdbcType=INTEGER},
+      open_time = #{openTime,jdbcType=TIME},
+      close_time = #{closeTime,jdbcType=TIME},
+      coordinates = #{coordinates,jdbcType=INTEGER},
+      longitude = #{longitude,jdbcType=DECIMAL},
+      latitude = #{latitude,jdbcType=DECIMAL},
+      version = #{version,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from location_applicant
+    <where>
+      <if test="condition.locationId != null">
+        and location_id = #{condition.locationId}
+      </if>
+      <if test="condition.locationDesc != null and condition.locationDesc != ''">
+        and location_desc like concat('%',#{condition.locationDesc},'%')
+      </if>
+      <if test="condition.applicantId != null">
+        and applicant_id = #{condition.locationId}
+      </if>
+      <if test="condition.facilityType != null and condition.facilityType != ''">
+        and facility_type = #{condition.facilityType}
+      </if>
+      <if test="condition.cnn != null">
+        and cnn = #{condition.cnn}
+      </if>
+      <if test="condition.applyStatus != null">
+        and apply_status = #{condition.applyStatus}
+      </if>
+      <if test="condition.openStatus != null">
+        and open_status = #{condition.openStatus}
+      </if>
+      <if test="condition.openTime != null">
+        and open_time = #{condition.openTime}
+      </if>
+      <if test="condition.closeTime != null">
+        and close_time = #{condition.closeTime}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectIntegration" resultMap="BaseResultMap">
+    select t1.location_id location_id, t1.applicant_id applicant_id, t1.coordinates coordinates, t1.location_desc location_desc
+    from location_applicant t1
+    join stock t2
+    on(
+    t1.location_id = t2.location_id
+    and t1.applicant_id = t2.applicant_id
+    )
+    where
+    st_distance_sphere( #{condition.geoPoint}, t1.coordinates) <![CDATA[ <= ]]>#{condition.distance}
+    and t1.open_status = #{condition.openStatus}
+    <if test="condition.skuName != null and condition.skuName != ''">
+      and t2.sku_name like concat('%',#{condition.skuName},'%')
+    </if>
+    and t2.avail_qty >= #{condition.qty}
+    group by location_id, applicant_id, coordinates, location_desc
+    order by location_id, applicant_id
+  </select>
+</mapper>

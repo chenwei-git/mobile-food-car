@@ -1,0 +1,41 @@
+
+###
+
+POST http://localhost:8001/business/applicant/create
+Content-Type: application/json
+
+{
+  "name": "El Calamar Perubian Food Truck"
+}
+
+###
+
+POST http://localhost:8001/business/applicant/page
+Content-Type: application/json
+
+{
+  "pageNum": 1,
+
+  "name": "To You"
+}
+
+###
+
+POST http://localhost:8001/business/applicant/modify
+Content-Type: application/json
+
+{
+  "id": 1,
+  "status": 1
+}
+
+
+###
+
+POST http://localhost:8001/business/applicant/modify
+Content-Type: application/json
+
+{
+  "id": 1,
+  "status": 1
+}

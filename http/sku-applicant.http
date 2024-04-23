@@ -1,0 +1,32 @@
+
+###
+
+POST http://localhost:8001/business/sku-applicant/create
+Content-Type: application/json
+
+{
+  "code": "s-1-003",
+  "name": "M-鳕鱼汉堡",
+  "price": 9.9,
+  "applicantId": 100001
+}
+
+###
+
+POST http://localhost:8001/business/sku-applicant/page
+Content-Type: application/json
+
+{
+  "pageNum": 1,
+  "pageSize": 2
+}
+
+
+###
+
+POST http://localhost:8001/business/sku-applicant/query
+Content-Type: application/json
+
+{
+  "id": 1
+}

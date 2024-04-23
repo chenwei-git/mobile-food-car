@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cw.mfc.business.mapper.StockMapper">
+  <resultMap id="BaseResultMap" type="com.cw.mfc.business.model.Stock">
+    <!--@Table stock-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="location_id" jdbcType="BIGINT" property="locationId" />
+    <result column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="lot_no" jdbcType="BIGINT" property="lotNo" />
+    <result column="applicant_id" jdbcType="BIGINT" property="applicantId" />
+    <result column="sku_name" jdbcType="VARCHAR" property="skuName" />
+    <result column="avail_qty" jdbcType="DECIMAL" property="availQty" />
+    <result column="selled_qty" jdbcType="DECIMAL" property="selledQty" />
+    <result column="destroy_qty" jdbcType="DECIMAL" property="destroyQty" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="is_deleted" jdbcType="BIGINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, location_id, sku_id, lot_no, applicant_id, sku_name, avail_qty, selled_qty, destroy_qty,
+    `status`, version, create_time, create_by, update_time, update_by, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from stock
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from stock
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cw.mfc.business.model.Stock" useGeneratedKeys="true">
+    insert into stock (location_id, sku_id, lot_no,
+      applicant_id, sku_name, avail_qty,
+      selled_qty, destroy_qty, `status`,
+      version, create_time, create_by,
+      update_time, update_by, is_deleted
+      )
+    values (#{locationId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{lotNo,jdbcType=BIGINT},
+      #{applicantId,jdbcType=BIGINT}, #{skuName,jdbcType=VARCHAR}, #{availQty,jdbcType=DECIMAL},
+      #{selledQty,jdbcType=DECIMAL}, #{destroyQty,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER},
+      #{version,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cw.mfc.business.model.Stock" useGeneratedKeys="true">
+    insert into stock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="locationId != null">
+        location_id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="lotNo != null">
+        lot_no,
+      </if>
+      <if test="applicantId != null">
+        applicant_id,
+      </if>
+      <if test="skuName != null">
+        sku_name,
+      </if>
+      <if test="availQty != null">
+        avail_qty,
+      </if>
+      <if test="selledQty != null">
+        selled_qty,
+      </if>
+      <if test="destroyQty != null">
+        destroy_qty,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="locationId != null">
+        #{locationId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="lotNo != null">
+        #{lotNo,jdbcType=BIGINT},
+      </if>
+      <if test="applicantId != null">
+        #{applicantId,jdbcType=BIGINT},
+      </if>
+      <if test="skuName != null">
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="availQty != null">
+        #{availQty,jdbcType=DECIMAL},
+      </if>
+      <if test="selledQty != null">
+        #{selledQty,jdbcType=DECIMAL},
+      </if>
+      <if test="destroyQty != null">
+        #{destroyQty,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cw.mfc.business.model.Stock">
+    update stock
+    <set>
+      <if test="locationId != null">
+        location_id = #{locationId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="lotNo != null">
+        lot_no = #{lotNo,jdbcType=BIGINT},
+      </if>
+      <if test="applicantId != null">
+        applicant_id = #{applicantId,jdbcType=BIGINT},
+      </if>
+      <if test="skuName != null">
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="availQty != null">
+        avail_qty = #{availQty,jdbcType=DECIMAL},
+      </if>
+      <if test="selledQty != null">
+        selled_qty = #{selledQty,jdbcType=DECIMAL},
+      </if>
+      <if test="destroyQty != null">
+        destroy_qty = #{destroyQty,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cw.mfc.business.model.Stock">
+    update stock
+    set location_id = #{locationId,jdbcType=BIGINT},
+      sku_id = #{skuId,jdbcType=BIGINT},
+      lot_no = #{lotNo,jdbcType=BIGINT},
+      applicant_id = #{applicantId,jdbcType=BIGINT},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      avail_qty = #{availQty,jdbcType=DECIMAL},
+      selled_qty = #{selledQty,jdbcType=DECIMAL},
+      destroy_qty = #{destroyQty,jdbcType=DECIMAL},
+      `status` = #{status,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    insert into stock
+    (location_id, sku_id, lot_no, applicant_id, sku_name, avail_qty, selled_qty, destroy_qty,
+      `status`, version, create_time, create_by, update_time, update_by, is_deleted)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.locationId,jdbcType=BIGINT}, #{item.skuId,jdbcType=BIGINT}, #{item.lotNo,jdbcType=BIGINT},
+        #{item.applicantId,jdbcType=BIGINT}, #{item.skuName,jdbcType=VARCHAR}, #{item.availQty,jdbcType=DECIMAL},
+        #{item.selledQty,jdbcType=DECIMAL}, #{item.destroyQty,jdbcType=DECIMAL}, #{item.status,jdbcType=INTEGER},
+        #{item.version,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR},
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.updateBy,jdbcType=VARCHAR}, #{item.isDeleted,jdbcType=BIGINT}
+        )
+    </foreach>
+  </insert>
+
+  <select id="selectByParam" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from stock
+    where
+    location_id in
+    <foreach collection="locationIds" open="(" close=")" separator="," item="item">
+        #{item}
+    </foreach>
+    <if test="skuName != null and skuName != ''">
+      and sku_name like concat('%',#{skuName},'%')
+    </if>
+    <if test="qty != null">
+      and avail_qty >= #{qty}
+    </if>
+  </select>
+
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from stock
+    <where>
+      <if test="condition.locationId != null">
+        and location_id = #{condition.locationId}
+      </if>
+      <if test="condition.skuId != null">
+        and sku_id = #{condition.skuId}
+      </if>
+      <if test="condition.applicantId != null">
+        and applicant_id = #{condition.applicantId}
+      </if>
+      <if test="condition.skuName != null and condition.skuName != ''">
+        and sku_name like concat('%',#{condition.skuName},'%')
+      </if>
+    </where>
+  </select>
+</mapper>

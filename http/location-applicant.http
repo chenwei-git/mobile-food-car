@@ -1,0 +1,56 @@
+
+###
+
+POST http://localhost:8001/business/location-applicant/create
+Content-Type: application/json
+
+{
+  "locationId": 1,
+  "locationDesc": "TAYLOR ST: BAY ST to NORTH POINT ST (2500 - 2599)",
+  "applicantId": 1,
+  "facilityType": "TRUNK",
+  "cnn": 123123,
+  "applyStatus": 1,
+  "openStatus": 1,
+  "openTime": "08:00",
+  "closeTime": "18:00",
+  "coordinates": {
+    "lng": 1,
+    "lat": 1
+  },
+  "longitude": 1,
+  "latitude": 1
+}
+
+
+
+###
+
+POST http://localhost:8001/business/location-applicant/page
+Content-Type: application/json
+
+{
+  "pageNum": 1,
+  "pageSize": 2
+}
+
+
+###
+
+POST http://localhost:8001/business/location-applicant/query
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+###
+
+POST http://localhost:8001/business/location-applicant/modify
+Content-Type: application/json
+
+{
+  "id": 1,
+  "applyStatus": 1,
+  "openStatus": 1
+}
